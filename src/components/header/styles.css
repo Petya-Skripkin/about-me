@@ -1,0 +1,9 @@
+.link-menu a {
+  transition: 0.5s;
+}
+
+.link-menu a:hover {
+  -webkit-box-shadow: 0px 3px 1px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 3px 1px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 1px -1px rgba(0, 0, 0, 0.5);
+}
