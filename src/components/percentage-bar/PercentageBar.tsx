@@ -1,27 +1,33 @@
-"use client"
+"use client";
+
 import { useRandomColor } from "@/hooks/useRandomColor";
 import "./styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IPercentageBar {
   name: string,
   progress: number,
 }
 
-export default function PercentageBar({name, progress}:IPercentageBar) {
+export default function PercentageBar({ name, progress }: IPercentageBar) {
   const [currentProgress, setProgress] = useState(0);
-  const [currentColor, setCurrentColor] = useState('');
+  const [currentColor, setCurrentColor] = useState("");
   const color = useRandomColor();
 
-  if (currentColor === '') {
-    setCurrentColor(color);
-  }
+  useEffect(() => {
+    if (!currentColor) {
+      setCurrentColor(color);
+    }
+  }, [color, currentColor]);
 
-  if (progress > currentProgress) {
-    setTimeout(() => {
-      setProgress(currentProgress + 1);
-    }, 10)
-  }
+  useEffect(() => {
+    if (progress > currentProgress) {
+      const timer = setTimeout(() => {
+        setProgress((prev) => prev + 1);
+      }, 10);
+      return () => clearTimeout(timer);
+    }
+  }, [progress, currentProgress]);
 
   return (
     <div style={{ borderColor: currentColor }} className="percentage">
