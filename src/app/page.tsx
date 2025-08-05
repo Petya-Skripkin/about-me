@@ -6,10 +6,23 @@ import MainLayout from "@/layouts/main-layout";
 import { companies, technologies } from "@/mock";
 
 export default function Home() {
+  const aboutTexts = [
+    "Люблю делать анимации и прочие прикольные на вид штучки. Хочу поработать в хорошей команде. Учился сам, менторов не было поэтому могу не знать многие термины.",
+    "Люблю поиграть в игры, но не очень люблю активный отдых.",
+    "Из планов на будущее освободить себе достаточно времени чтобы повидать страны. И когда-нибудь попробовать сменить профессию.",
+    "Не стал сюда добавлять запросы и мобилку. Эта страничка просто обо мне)",
+  ];
+
   return (
     <MainLayout>
       <div className="px-10 py-5">
         <Header />
+        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 mb-[32px]">
+          <h1 className="text-3xl font-bold mb-2">Привет, я Пётр</h1>
+          <p className="text-lg">
+            Front-end разработчик и любитель красивых интерфейсов
+          </p>
+        </div>
         <div className="flex gap-[24px]">
           <div className="flex flex-2 flex-col max-w-[900px]">
             <PersonalInfo />
@@ -40,12 +53,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-[6px]">
+        <div className="flex flex-col gap-[6px] mt-[24px]">
           <h2 className="h2">Немного обо мне</h2>
-          <p>Люблю делать анимации и прочие прикольные на вид штучки. Хочу поработать в хорошей команде. Учился сам, менторов не было поэтому могу не знать многие термины.</p>
-          <p>Люблю поиграть в игры, но не очень люблю активный отдых.</p>
-          <p>Из планов на будущее освободить себе достаточно времени чтобы повидать страны. И когда-нибудь попробовать сменить профессию.</p>
-          <p>Не стал сюда добавлять запросы и мобилку. Эта страничка просто обо мне)</p>
+          {aboutTexts.map((text, i) => (
+            <p
+              key={i}
+              className="opacity-0 animate-fadeInUp"
+              style={{ animationDelay: `${i * 0.2 + 0.1}s` }}
+            >
+              {text}
+            </p>
+          ))}
         </div>
       </div>
     </MainLayout>
